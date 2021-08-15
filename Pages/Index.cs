@@ -15,10 +15,10 @@ namespace BlazorWasmNetlify.Pages {
 
 
         #region Methods
-        protected override void OnParametersSet() {
-            //_test_Switch = RecievedVal.Switch_To;
-            //RecievedVal.SetCurrentPageName(Name);
-        }
+        //protected override void OnParametersSet() {
+        //    //_test_Switch = RecievedVal.Switch_To;
+        //    //RecievedVal.SetCurrentPageName(Name);
+        //}
 
         public void On_Test_Switch_Changed(int tiTestVal) {
             _test_Switch = tiTestVal;

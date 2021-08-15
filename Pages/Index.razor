@@ -1,5 +1,7 @@
 ﻿@page "/"
 @*@inject NavMenu RecievedVal;*@
+@*@inject IJSRuntime JS*@
+
 
 @switch (Test_Switch) {
     case 1:
@@ -11,7 +13,12 @@
     case 3:
         <BlazorWasmNetlify.Components.TestComponent_3.CmpTestComponent_3></BlazorWasmNetlify.Components.TestComponent_3.CmpTestComponent_3>
         break;
-
+    case 4:
+        <BlazorWasmNetlify.Components.TestComponent_4.CmpTestComponent_4 @bind-test_num="Test_Switch"></BlazorWasmNetlify.Components.TestComponent_4.CmpTestComponent_4>
+        break;
+    case 5:
+        <BlazorWasmNetlify.Components.TestComponent_5.CmpTestComponent_5></BlazorWasmNetlify.Components.TestComponent_5.CmpTestComponent_5>
+        break;
 }
 
 
