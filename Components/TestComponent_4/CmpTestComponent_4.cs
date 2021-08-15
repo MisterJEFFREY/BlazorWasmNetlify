@@ -20,7 +20,10 @@ namespace BlazorWasmNetlify.Components.TestComponent_4 {
 
 
         #region Methods
-
+        //THIS WORKS AS INTENDED! NO NEED TO PASS FROM PARENT TO CHILD COMPONENT!!
+        protected override void OnInitialized() {
+            currentUrl = NavigationManager.Uri;
+        }
         //private async void FormDataTest() {
         //    await JS.InvokeAsync<object>("AccessFORMDATA");
         //}
@@ -60,6 +63,9 @@ namespace BlazorWasmNetlify.Components.TestComponent_4 {
 
 
         #region Properties
+        public string currentUrl { get; set; }
+
+
         [Parameter]
         public int test_num { get; set; }
 

@@ -1,8 +1,8 @@
 ﻿<!--TEST TO SEE IF ONE CAN SEND GOOGLE FORM RESPONSES WITHIN BLAZOR WEB ASSEMBLY
     I GATTA WORK WITH WHAT I HAVE!
     -->
-
 @*@inject IJSRuntime JS*@
+@inject NavigationManager NavigationManager
 
 <div class="col-md-12 mx-auto">
     <div name="testtarget">
@@ -13,107 +13,107 @@
     @*target="_self"*@
     @*onsubmit=""*@
     @*@onsubmit="@(()=>Update_Test_Num(5))"*@
-<form action="https://docs.google.com/forms/d/e/1FAIpQLScoCxLrnqHm877k7Q14U0aechPU96v0z07b5xQmUzQ9RkKMjA/formResponse"
-      target="formSubmitFrame"
-      id="bootstrapForm"
-      method="POST"
-      name="testformname">
-    <fieldset>
-        <h2>BLAZOR_TEST<br><small></small></h2>
-    </fieldset>
+    <form action="https://docs.google.com/forms/d/e/1FAIpQLScoCxLrnqHm877k7Q14U0aechPU96v0z07b5xQmUzQ9RkKMjA/formResponse"
+          target="formSubmitFrame"
+          id="bootstrapForm"
+          method="POST"
+          name="testformname">
+        <fieldset>
+            <h2>BLAZOR_TEST<br><small></small></h2>
+        </fieldset>
 
 
-    <!-- Field type: "short" id: "1853799674" -->
-    <fieldset>
-        <legend for="1853799674">Name:</legend>
-        <div class="form-group">
-            <input id="1535074244" type="text" name="entry.1535074244" class="form-control" @bind="ContactName" required>
-        </div>
-    </fieldset>
-
-
-    <!-- Field type: "short" id: "393217484" -->
-    <fieldset>
-        <legend for="393217484">Email:</legend>
-        <div class="form-group">
-            <input id="126409047" type="text" name="entry.126409047" class="form-control" @bind="ContactEmail" required>
-        </div>
-    </fieldset>
-
-
-    <!-- Field type: "choices" id: "1579405966" -->
-    <fieldset>
-        <legend for="1579405966">Primary Subject:</legend>
-        <div class="form-group">
-            <div class="radio">
-                <label>
-                    <!--ORIGINALLY value =""-->
-                    <input type="radio" name="entry.784052716" value="Option 1" @onchange="On_ContactSubjectChanged" required>
-                    Option 1
-                </label>
+        <!-- Field type: "short" id: "1853799674" -->
+        <fieldset>
+            <legend for="1853799674">Name:</legend>
+            <div class="form-group">
+                <input id="1535074244" type="text" name="entry.1535074244" class="form-control" @bind="ContactName" required>
             </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="entry.784052716" value="Option 2" @onchange="On_ContactSubjectChanged" required>
-                    Option 2
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="entry.784052716" value="Option 3" @onchange="On_ContactSubjectChanged" required>
-                    Option 3
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="entry.784052716" value="Option 4" @onchange="On_ContactSubjectChanged" required>
-                    Option 4
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="entry.784052716" value="Option 5" @onchange="On_ContactSubjectChanged" required>
-                    Option 5
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="entry.784052716" value="__other_option__" @onchange="On_ContactSubjectChanged" required>
-                </label>
-                <input type="text" name="entry.784052716.other_option_response" placeholder="custom value">
-            </div>
-        </div>
-    </fieldset>
+        </fieldset>
 
 
-    <!-- Field type: "paragraph" id: "1080509416" -->
-    <fieldset>
-        <legend for="1080509416">Message:</legend>
-        <div class="form-group">
-            <textarea id="1726805860" name="entry.1726805860" class="form-control" @bind="ContactMessage" required></textarea>
-        </div>
-    </fieldset>
+        <!-- Field type: "short" id: "393217484" -->
+        <fieldset>
+            <legend for="393217484">Email:</legend>
+            <div class="form-group">
+                <input id="126409047" type="text" name="entry.126409047" class="form-control" @bind="ContactEmail" required>
+            </div>
+        </fieldset>
 
-    <input type="hidden" name="fvv" value="1">
-    <input type="hidden" name="fbzx" value="7189875998876399784">
-    <!--
-        CAVEAT: In multipages (multisection) forms, *pageHistory* field tells to google what sections we've currently completed.
-        This usually starts as "0" for the first page, then "0,1" in the second page... up to "0,1,2..N" in n-th page.
-        Keep this in mind if you plan to change this code to recreate any sort of multipage-feature in your exported form.
-        We're setting this to the total number of pages in this form because we're sending all fields from all the section together.
-    -->
-    <input type="hidden" name="pageHistory" value="0">
-    @*@if (ContactFormSubmitted == false) {*@
-    <input class="btn btn-primary @(ContactFormSubmitted == true ? "d-none" : "")" type="submit" value="Submit" @onclick="@(() => Update_Test_Num(5))">
-    @*@onclick="@FormDataTest"*@@*@onclick="@(() => Update_Test_Num(5))"*@
-    @if (ContactFormSubmitted == true) {
-        <button class="btn btn-primary" type="button" disabled>
-            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-            Loading...
-        </button>
-    }
-    @*onsubmit="@Update_Test_Num(5)"*@ @*@onclick="@(() => Update_Test_Num(5))"*@
-</form>
+
+        <!-- Field type: "choices" id: "1579405966" -->
+        <fieldset>
+            <legend for="1579405966">Primary Subject:</legend>
+            <div class="form-group">
+                <div class="radio">
+                    <label>
+                        <!--ORIGINALLY value =""-->
+                        <input type="radio" name="entry.784052716" value="Option 1" @onchange="On_ContactSubjectChanged" required>
+                        Option 1
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="entry.784052716" value="Option 2" @onchange="On_ContactSubjectChanged" required>
+                        Option 2
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="entry.784052716" value="Option 3" @onchange="On_ContactSubjectChanged" required>
+                        Option 3
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="entry.784052716" value="Option 4" @onchange="On_ContactSubjectChanged" required>
+                        Option 4
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="entry.784052716" value="Option 5" @onchange="On_ContactSubjectChanged" required>
+                        Option 5
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="entry.784052716" value="__other_option__" @onchange="On_ContactSubjectChanged" required>
+                    </label>
+                    <input type="text" name="entry.784052716.other_option_response" placeholder="custom value">
+                </div>
+            </div>
+        </fieldset>
+
+
+        <!-- Field type: "paragraph" id: "1080509416" -->
+        <fieldset>
+            <legend for="1080509416">Message:</legend>
+            <div class="form-group">
+                <textarea id="1726805860" name="entry.1726805860" class="form-control" @bind="ContactMessage" required></textarea>
+            </div>
+        </fieldset>
+
+        <input type="hidden" name="fvv" value="1">
+        <input type="hidden" name="fbzx" value="7189875998876399784">
+        <!--
+            CAVEAT: In multipages (multisection) forms, *pageHistory* field tells to google what sections we've currently completed.
+            This usually starts as "0" for the first page, then "0,1" in the second page... up to "0,1,2..N" in n-th page.
+            Keep this in mind if you plan to change this code to recreate any sort of multipage-feature in your exported form.
+            We're setting this to the total number of pages in this form because we're sending all fields from all the section together.
+        -->
+        <input type="hidden" name="pageHistory" value="0">
+        @*@if (ContactFormSubmitted == false) {*@
+        <input class="btn btn-primary @(ContactFormSubmitted == true ? "d-none" : "")" type="submit" value="Submit" @onclick="@(() => Update_Test_Num(5))">
+        @*@onclick="@FormDataTest"*@@*@onclick="@(() => Update_Test_Num(5))"*@
+        @if (ContactFormSubmitted == true) {
+            <button class="btn btn-primary" type="button" disabled>
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                Loading...
+            </button>
+        }
+        @*onsubmit="@Update_Test_Num(5)"*@ @*@onclick="@(() => Update_Test_Num(5))"*@
+    </form>
 
 </div>
 

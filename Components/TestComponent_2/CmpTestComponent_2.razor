@@ -15,10 +15,19 @@
     I NEED TO KNOW SO I CAN GRAB FROM URL!
 </p>
 
-<div>
-    <button class="btn btn-outline-secondary btn-sm py-0" @onclick="@(() => Update_Test_Num(4))">
-        Click to see if this component changes.
-    </button>
+<div class="row">
+    <!--TEST COMPONENT SWITCH-->
+    <div class="col-md mx-auto">
+        <button class="btn btn-outline-secondary btn-sm py-0" @onclick="@(() => Update_Test_Num(4))">
+            Click to see if this component changes.
+        </button>
+    </div>
+    <!--TEST IFRAME TEMP PASSWORD SERVICE-->
+    <div class="col-md mx-auto">
+        <button class="btn btn-outline-secondary btn-sm py-0" @onclick="@(() => Update_Test_Num(6))">
+            Click to test iframe temp pass service
+        </button>
+    </div>
 </div>
 
 <p>
